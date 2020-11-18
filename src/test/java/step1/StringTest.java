@@ -8,15 +8,20 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringTest {
 
-    @DisplayName("1,2 분리 / 1 분리")
+    @DisplayName("1,2 분리")
     @Test
-    void splitTest_1() {
+    void splitTest_1_1() {
         String input = "1,2";
         String [] splitStr = input.split(",");
         assertThat(splitStr).contains("1","2");
-        String input2 = "1";
-        String [] splitStr2 = input2.split(",");
-        assertThat(splitStr2).containsExactly("1");
+    }
+
+    @DisplayName("1 분리")
+    @Test
+    void splitTest_1_2() {
+        String input = "1";
+        String [] splitStr = input.split(",");
+        assertThat(splitStr).containsExactly("1");
     }
 
     @DisplayName("괄호제거")
