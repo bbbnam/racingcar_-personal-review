@@ -10,35 +10,33 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringCalculatorTest {
 
+    private StringCalculator stringCalulator = new StringCalculator();
+
     @DisplayName("덧셈 테스트")
     @Test
     void additionTest() {
-        StringCalculator stringCalulator = new StringCalculator("3 + 5");
-        int result = stringCalulator.calculate();
+        int result = stringCalulator.calculate("3 + 5");
         assertThat(result).isEqualTo(8);
     }
 
     @DisplayName("뺄셈 테스트")
     @Test
     void subtractTest() {
-        StringCalculator stringCalulator = new StringCalculator("6 - 2");
-        int result = stringCalulator.calculate();
+        int result = stringCalulator.calculate("6 - 2");
         assertThat(result).isEqualTo(4);
     }
 
     @DisplayName("곱셈 테스트")
     @Test
     void multiplyTest() {
-        StringCalculator stringCalulator = new StringCalculator("10 * 3");
-        int result = stringCalulator.calculate();
+        int result = stringCalulator.calculate("10 * 3");
         assertThat(result).isEqualTo(30);
     }
 
     @DisplayName("나눗셈 테스트")
     @Test
     void divisionTest() {
-        StringCalculator stringCalulator = new StringCalculator("15 / 3");
-        int result = stringCalulator.calculate();
+        int result = stringCalulator.calculate("15 / 3");
         assertThat(result).isEqualTo(5);
     }
 
@@ -46,18 +44,18 @@ public class StringCalculatorTest {
     @ParameterizedTest
     @NullAndEmptySource
     void validNullorEmptyString(String nullorEmpty) {
-        StringCalculator stringCalulator = new StringCalculator(nullorEmpty);
         assertThatThrownBy(() -> {
-            stringCalulator.calculate();
-        }).isInstanceOf(IllegalArgumentException.class);
+            stringCalulator.calculate(nullorEmpty);
+        }).isInstanceOf(IllegalArgumentException.class)
+        .hasMessage("입력값은 null 또는 빈값이 올 수 없습니다.");
     }
 
     @DisplayName("입력값이 사칙연산 기호가 아닌 경우 - IllegalArgumentException")
     @Test
     void validOperations() {
-        StringCalculator stringCalulator = new StringCalculator("3 & 6");
         assertThatThrownBy(() -> {
-            stringCalulator.calculate();
-        }).isInstanceOf(IllegalArgumentException.class);
+            stringCalulator.calculate("3 & 6");
+        }).isInstanceOf(IllegalArgumentException.class)
+        .hasMessage("사칙연산 기호가 아닙니다.");
     }
 }
