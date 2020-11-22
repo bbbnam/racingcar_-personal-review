@@ -33,8 +33,8 @@ public enum Operator {
         }
     }
 
-    public int calculate(int sum, String expression) {
-
-        return 0;
+    public int calculate(int sum, String nextNum) {
+        int num = Integer.parseInt(nextNum);
+        return this.biFunction.apply(sum, num);
     }
 }
