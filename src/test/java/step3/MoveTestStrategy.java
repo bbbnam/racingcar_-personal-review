@@ -1,5 +1,7 @@
 package step3;
 
+import step3.domain.MoveStrategy;
+
 public class MoveTestStrategy implements MoveStrategy {
 
     private final boolean moveValue;
