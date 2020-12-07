@@ -21,4 +21,20 @@ class CarTest {
         car.addPosition();
         assertThat(car.getPosition()).isEqualTo(4);
     }
+
+    @DisplayName("car 이동 테스트 - 전진시")
+    @Test
+    void testCarMoveGo() {
+        Car car = new Car(0);
+        car.move(new MoveTestStrategy(true)); //무조건 전진
+        assertThat(car.getPosition()).isEqualTo(1);
+    }
+
+    @DisplayName("car 이동 테스트 - 전지하지 않고 그대로(멈춤)")
+    @Test
+    void testCarMoveStop() {
+        Car car = new Car(0);
+        car.move(new MoveTestStrategy(false)); //무조건 멈춤
+        assertThat(car.getPosition()).isEqualTo(0);
+    }
 }
