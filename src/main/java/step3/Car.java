@@ -18,6 +18,12 @@ public class Car {
         return position;
     }
 
+    public void move(MoveStrategy moveStrategy) {
+        if(moveStrategy.isMove()) {
+            addPosition();
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
