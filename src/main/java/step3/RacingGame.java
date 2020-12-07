@@ -17,10 +17,6 @@ public class RacingGame {
         this.carsCount = carsCount;
     }
 
-    public int getRacingCount() {
-        return racingCount;
-    }
-
     public Result progress(MoveStrategy moveStrategy) {
         List<Cars> result = new ArrayList<>();
         Cars moved = Cars.ValueOf(carsCount);

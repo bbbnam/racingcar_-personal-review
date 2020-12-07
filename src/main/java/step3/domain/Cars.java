@@ -49,9 +49,11 @@ public class Cars {
         return Objects.hash(cars);
     }
 
-    public void print() {
+    public String print() {
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < cars.size(); i++) {
-            cars.get(i).print();
+            sb.append(cars.get(i).print());
         }
+        return sb.toString();
     }
 }

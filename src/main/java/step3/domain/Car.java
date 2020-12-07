@@ -38,10 +38,12 @@ public class Car {
         return Objects.hash(position);
     }
 
-    public void print() {
+    public String print() {
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < position; i++) {
-            System.out.print("-");
+            sb.append("-");
         }
-        System.out.println();
+        sb.append(System.getProperty("line.separator"));
+        return sb.toString();
     }
 }

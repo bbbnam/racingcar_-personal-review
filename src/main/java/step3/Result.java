@@ -2,6 +2,7 @@ package step3;
 
 import step3.domain.Cars;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Result {
@@ -12,14 +13,11 @@ public class Result {
         this.result = result;
     }
 
-    public void printResult() {
-        for (Cars cars : result) {
-            cars.print();
-            System.out.println();
-        }
-    }
-
     public int getResultSize() {
         return result.size();
+    }
+
+    public List<Cars> getResult() {
+        return Collections.unmodifiableList(result);
     }
 }
