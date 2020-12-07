@@ -50,6 +50,8 @@ public class Cars {
     }
 
     public void print() {
-
+        for (int i = 0; i < cars.size(); i++) {
+            cars.get(i).print();
+        }
     }
 }
