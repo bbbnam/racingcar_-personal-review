@@ -1,4 +1,4 @@
-package step3;
+package step3.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,11 +28,12 @@ public class Cars {
         return cars.size();
     }
 
-    public Cars move() {
-        for (int i = 0; i < cars.size(); i++) {
-            cars.get(i).move(new RandomStrategy());
+    public Cars moveAll(MoveStrategy moveStrategy) {
+        List<Car> movedCars = new ArrayList<>();
+        for (Car car: cars) {
+            movedCars.add(car.move(moveStrategy));
         }
-        return new Cars(cars);
+        return new Cars(movedCars);
     }
 
     @Override

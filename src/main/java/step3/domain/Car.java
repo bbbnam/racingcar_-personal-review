@@ -1,27 +1,28 @@
-package step3;
+package step3.domain;
 
 import java.util.Objects;
 
 public class Car {
 
-    private int position;
+    private final int position;
 
     public Car(int position) {
         this.position = position;
     }
 
-    public void addPosition() {
-        this.position++;
+    public int addPosition() {
+        return position + 1;
     }
 
     public int getPosition() {
         return position;
     }
 
-    public void move(MoveStrategy moveStrategy) {
+    public Car move(MoveStrategy moveStrategy) {
         if(moveStrategy.isMove()) {
-            addPosition();
+            return new Car(addPosition());
         }
+        return this;
     }
 
     @Override
@@ -35,5 +36,12 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(position);
+    }
+
+    public void print() {
+        for (int i = 0; i < position; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
     }
 }

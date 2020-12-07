@@ -1,5 +1,8 @@
 package step3;
 
+import step3.domain.Cars;
+import step3.domain.MoveStrategy;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -7,21 +10,23 @@ import java.util.Objects;
 public class RacingGame {
 
     private final int racingCount;
-    private final Cars cars;
+    private final int carsCount;
 
-    public RacingGame(int racingCount, Cars cars) {
+    public RacingGame(int racingCount, int carsCount) {
         this.racingCount = racingCount;
-        this.cars = cars;
+        this.carsCount = carsCount;
     }
 
     public int getRacingCount() {
         return racingCount;
     }
 
-    public Result progress() {
+    public Result progress(MoveStrategy moveStrategy) {
         List<Cars> result = new ArrayList<>();
+        Cars moved = Cars.ValueOf(carsCount);
         for (int i = 0; i < racingCount; i++) {
-            result.add(cars.move());
+            moved = moved.moveAll(moveStrategy);
+            result.add(moved);
         }
         return new Result(result);
     }
@@ -32,11 +37,11 @@ public class RacingGame {
         if (o == null || getClass() != o.getClass()) return false;
         RacingGame that = (RacingGame) o;
         return racingCount == that.racingCount &&
-                Objects.equals(cars, that.cars);
+                carsCount == that.carsCount;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(racingCount, cars);
+        return Objects.hash(racingCount, carsCount);
     }
 }
