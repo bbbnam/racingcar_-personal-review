@@ -13,7 +13,7 @@ public class StringCalculatorTest {
         String input = "2 + 3";
 
         //when
-        StringCalculator stringCalculator = new StringCalculator(input);
+        StringCalculator stringCalculator = StringCalculator.of(input);
         int result = stringCalculator.calculate();
 
         //then
