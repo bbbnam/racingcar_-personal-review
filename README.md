@@ -7,3 +7,10 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 2021-04-07 step2 진행 
+- 문자열 계산기 enum구현 부분 복습
+
+## 2021-04-08 step2 진행
+- 간단회고 : 인터페이스를 통해 확장한 enum을 넣어주려고 했는데, (~~방법도 어렵고~~)
+  생각해보니 enum 안에 상수값을 추가하는게 새로운 enum 만드는 것보다 편한듯..
