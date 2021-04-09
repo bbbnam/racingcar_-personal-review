@@ -19,4 +19,18 @@ public class StringCalculatorTest {
         //then
         Assertions.assertThat(result).isEqualTo(5);
     }
+
+    @DisplayName("뺄셈")
+    @Test
+    void subtractTest() {
+        //given
+        String input = "2 - 3";
+
+        //when
+        StringCalculator stringCalculator = StringCalculator.of(input);
+        int result = stringCalculator.calculate();
+
+        //then
+        Assertions.assertThat(result).isEqualTo(5);
+    }
 }
