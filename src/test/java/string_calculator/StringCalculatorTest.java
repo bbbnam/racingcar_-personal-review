@@ -24,13 +24,41 @@ public class StringCalculatorTest {
     @Test
     void subtractTest() {
         //given
-        String input = "2 - 3";
+        String input = "3 - 1";
 
         //when
         StringCalculator stringCalculator = StringCalculator.of(input);
         int result = stringCalculator.calculate();
 
         //then
-        Assertions.assertThat(result).isEqualTo(5);
+        Assertions.assertThat(result).isEqualTo(2);
+    }
+
+    @DisplayName("곱셈")
+    @Test
+    void multyplyTest() {
+        //given
+        String input = "2 * 3";
+
+        //when
+        StringCalculator stringCalculator = StringCalculator.of(input);
+        int result = stringCalculator.calculate();
+
+        //then
+        Assertions.assertThat(result).isEqualTo(6);
+    }
+
+    @DisplayName("나눗셈")
+    @Test
+    void divideTest() {
+        //given
+        String input = "4 / 2";
+
+        //when
+        StringCalculator stringCalculator = StringCalculator.of(input);
+        int result = stringCalculator.calculate();
+
+        //then
+        Assertions.assertThat(result).isEqualTo(2);
     }
 }
