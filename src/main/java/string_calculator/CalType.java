@@ -5,7 +5,9 @@ import java.util.function.BiFunction;
 
 public enum CalType {
     ADD("+", (a, b) -> a + b),
-    SUBTRACT("-", (a, b) -> a - b);
+    SUBTRACT("-", (a, b) -> a - b),
+    MULTYPLY("*", (a, b) -> a * b),
+    DIVIDE("/", (a, b) -> a / b);
 
     private final String operator;
     private final BiFunction<Double, Double, Double> biFunction;
