@@ -93,4 +93,18 @@ public class StringCalculatorTest {
         Assertions.assertThatThrownBy(()-> stringCalculator.calculate())
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("사칙연산을 모두 포함하는 기능 구현")
+    @Test
+    void testAllExpression() {
+        String input = "4 * 2 + 2 - 5 / 5";
+        Expression expression = new StringExpression(input);
+        StringCalculator stringCalculator = StringCalculator.of(expression);
+
+        //when
+        double result = stringCalculator.calculate();
+
+        //then
+        Assertions.assertThat(result).isEqualTo(1);
+    }
 }
