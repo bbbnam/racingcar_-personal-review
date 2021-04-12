@@ -13,9 +13,10 @@ public class StringCalculatorTest {
     void testAdd() {
         //given
         String input = "2 + 3 + 5";
+        Expression expression = new StringExpression(input);
+        StringCalculator stringCalculator = StringCalculator.of(expression);
 
         //when
-        StringCalculator stringCalculator = StringCalculator.of(input);
         double result = stringCalculator.calculate();
 
         //then
@@ -27,9 +28,10 @@ public class StringCalculatorTest {
     void testSubtract() {
         //given
         String input = "3 - 1 - 1";
+        Expression expression = new StringExpression(input);
+        StringCalculator stringCalculator = StringCalculator.of(expression);
 
         //when
-        StringCalculator stringCalculator = StringCalculator.of(input);
         double result = stringCalculator.calculate();
 
         //then
@@ -41,9 +43,10 @@ public class StringCalculatorTest {
     void testMultyply() {
         //given
         String input = "2 * 3 * 7";
+        Expression expression = new StringExpression(input);
+        StringCalculator stringCalculator = StringCalculator.of(expression);
 
         //when
-        StringCalculator stringCalculator = StringCalculator.of(input);
         double result = stringCalculator.calculate();
 
         //then
@@ -55,9 +58,10 @@ public class StringCalculatorTest {
     void testDivide() {
         //given
         String input = "4 / 2 / 2";
+        Expression expression = new StringExpression(input);
+        StringCalculator stringCalculator = StringCalculator.of(expression);
 
         //when
-        StringCalculator stringCalculator = StringCalculator.of(input);
         double result = stringCalculator.calculate();
 
         //then
@@ -71,10 +75,9 @@ public class StringCalculatorTest {
         //given
         String input = empty;
 
-
         //when / then
         Assertions.assertThatThrownBy(()->
-                StringCalculator.of(input))
+                new StringExpression(input))
         .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -83,9 +86,10 @@ public class StringCalculatorTest {
     void testExpression() {
         //given
         String input = "4 * 2 / 2 % 2";
+        Expression expression = new StringExpression(input);
 
         //when / then
-        StringCalculator stringCalculator = StringCalculator.of(input);
+        StringCalculator stringCalculator = StringCalculator.of(expression);
         Assertions.assertThatThrownBy(()-> stringCalculator.calculate())
                 .isInstanceOf(IllegalArgumentException.class);
     }
