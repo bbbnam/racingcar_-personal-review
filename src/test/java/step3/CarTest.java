@@ -13,14 +13,14 @@ class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car(new Position(0));
+        car = new Car(0);
     }
 
     @Test
     @DisplayName("차량 이동 테스트 - 외부에서 조건 주입")
     void move() {
-        car.move(() -> true);
+        Car movedCar = car.move(() -> true);
 
-        assertThat(car).isEqualTo(new Car(new Position(1)));
+        assertThat(movedCar).isEqualTo(new Car(1));
     }
 }
