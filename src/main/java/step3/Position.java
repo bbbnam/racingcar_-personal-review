@@ -10,6 +10,10 @@ public class Position {
         this.position = position;
     }
 
+    public void increase() {
+        position++;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

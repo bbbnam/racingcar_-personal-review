@@ -2,6 +2,7 @@ package step3;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -19,10 +20,20 @@ public class Cars {
         return new Cars(newCars);
     }
 
-    public int getCount() {
-        return cars.size();
+    public Cars moveAll(MoveCondition moveStratgy) {
+        for (Car car : cars) {
+            car.move(moveStratgy);
+        }
+        return this;
     }
 
-    public void move(MoveCondition moveStratgy) {
+    public List<Position> getCarPostions() {
+        return cars.stream()
+                   .map(car -> car.getPostion())
+                   .collect(Collectors.toList());
+    }
+
+    public int getCount() {
+        return cars.size();
     }
 }

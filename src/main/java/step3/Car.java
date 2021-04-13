@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Car {
 
-    private Position position;
+    private final Position position;
 
     public Car(int position) {
         this.position = new Position(position);
@@ -12,10 +12,14 @@ public class Car {
     }
 
     public Car move(MoveCondition condition) {
-        /*if (condition.isMovable()) {
+        if (condition.isMovable()) {
+            position.increase();
+        }
+        return this;
+    }
 
-        }*/
-        return new Car(1);
+    public Position getPostion() {
+        return position;
     }
 
     @Override

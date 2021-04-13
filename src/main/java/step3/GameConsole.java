@@ -10,19 +10,19 @@ public class GameConsole {
         this.contests = Contests.of(tryNumbers);
     }
 
+    public void start(MoveCondition moveStratgy) {
+        contests.start(cars, moveStratgy);
+    }
+
+    public GameResult getResult() {
+        return new GameResult(cars);
+    }
+
     public int getCarsCount() {
         return cars.getCount();
     }
 
     public int getTryCount() {
         return contests.getCount();
-    }
-
-    public void start(MoveCondition moveStratgy) {
-        cars.move(moveStratgy);
-    }
-
-    public GameResult getResult() {
-        return null;
     }
 }

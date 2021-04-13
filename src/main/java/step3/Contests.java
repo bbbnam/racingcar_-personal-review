@@ -15,4 +15,10 @@ public class Contests {
     public int getCount() {
         return tryNumbers;
     }
+
+    public void start(Cars cars, MoveCondition moveStratgy) {
+        for (int i = 0; i < tryNumbers; i++) {
+            cars.moveAll(moveStratgy);
+        }
+    }
 }
