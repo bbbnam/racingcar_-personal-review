@@ -22,4 +22,7 @@ public class Cars {
     public int getCount() {
         return cars.size();
     }
+
+    public void move(MoveCondition moveStratgy) {
+    }
 }

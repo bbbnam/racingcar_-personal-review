@@ -17,4 +17,12 @@ public class GameConsole {
     public int getTryCount() {
         return contests.getCount();
     }
+
+    public void start(MoveCondition moveStratgy) {
+        cars.move(moveStratgy);
+    }
+
+    public GameResult getResult() {
+        return null;
+    }
 }
