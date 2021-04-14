@@ -1,5 +1,7 @@
 package step3;
 
+import step3.domain.MoveCondition;
+
 public class TestStratgy implements MoveCondition {
 
     private final boolean movable;

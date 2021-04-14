@@ -2,6 +2,8 @@ package step3;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step3.domain.GameConsole;
+import step3.domain.Position;
 
 import java.util.Arrays;
 import java.util.List;
