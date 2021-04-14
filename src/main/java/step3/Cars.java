@@ -1,5 +1,7 @@
 package step3;
 
+import step3.exception.IllegalCarsException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -8,8 +10,15 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(List<Car> cars) {
+    private Cars(List<Car> cars) {
+        validateCars(cars);
         this.cars = cars;
+    }
+
+    private void validateCars(List<Car> cars) {
+        if (cars.isEmpty()) {
+            throw new IllegalCarsException();
+        }
     }
 
     public static Cars of(int carsCount) {

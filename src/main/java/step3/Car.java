@@ -7,8 +7,7 @@ public class Car {
     private final Position position;
 
     public Car(int position) {
-        this.position = new Position(position);
-
+        this.position = Position.of(position);
     }
 
     public Car move(MoveCondition condition) {

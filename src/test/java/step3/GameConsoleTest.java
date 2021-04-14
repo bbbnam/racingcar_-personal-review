@@ -30,7 +30,7 @@ class GameConsoleTest {
         GameResult result = gameConsole.getResult();
 
         //then
-        List<Position> expectedPositions = Arrays.asList(new Position(5), new Position(5), new Position(5));
+        List<Position> expectedPositions = Arrays.asList(Position.of(5), Position.of(5), Position.of(5));
         assertThat(result.getCarPositions()).isEqualTo(expectedPositions);
     }
 
@@ -45,7 +45,7 @@ class GameConsoleTest {
 
         //then
         GameResult result = gameConsole.getResult();
-        List<Position> expectedPositions = Arrays.asList(new Position(0), new Position(0), new Position(0));
+        List<Position> expectedPositions = Arrays.asList(Position.of(0), Position.of(0), Position.of(0));
         assertThat(result.getCarPositions()).isEqualTo(expectedPositions);
     }
 }

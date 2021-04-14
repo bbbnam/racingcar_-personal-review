@@ -1,13 +1,26 @@
 package step3;
 
+import step3.exception.IllegalPositionException;
+
 import java.util.Objects;
 
 public class Position {
 
     private int position;
 
-    public Position(int position) {
+    private Position(int position) {
+        validatePosition(position);
         this.position = position;
+    }
+
+    public static Position of(int position) {
+        return new Position(position);
+    }
+
+    private void validatePosition(int position) {
+        if (position < 0) {
+            throw new IllegalPositionException();
+        }
     }
 
     public void increase() {
