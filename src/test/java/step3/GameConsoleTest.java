@@ -37,12 +37,14 @@ class GameConsoleTest {
     @DisplayName("전진 조건에 따라 전진한 결과 테스트 - 전진 못하게 하는 전략 주입")
     @Test
     void move2() {
-        //when
+        //given
         GameConsole gameConsole = new GameConsole(3, 5);
+
+        //when
         gameConsole.start(new TestStratgy(false));
-        GameResult result = gameConsole.getResult();
 
         //then
+        GameResult result = gameConsole.getResult();
         List<Position> expectedPositions = Arrays.asList(new Position(0), new Position(0), new Position(0));
         assertThat(result.getCarPositions()).isEqualTo(expectedPositions);
     }
