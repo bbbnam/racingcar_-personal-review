@@ -26,7 +26,7 @@ public class InputNumber {
     }
 
     private void checkNumber(String input) {
-        if (isNumber(input)) {
+        if (!isNumber(input)) {
             throw new NumberFormatException();
         }
     }
