@@ -2,8 +2,8 @@ package step3;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.domain.GameConsole;
-import step3.domain.Position;
+import step3.domain.Cars;
+import step3.service.GameConsole;
 
 import java.util.Arrays;
 import java.util.List;
@@ -28,12 +28,13 @@ class GameConsoleTest {
     void move1() {
         //when
         GameConsole gameConsole = new GameConsole(3, 5);
-        gameConsole.start(new TestStratgy(true));
-        GameResult result = gameConsole.getResult();
+        List<Cars> result = gameConsole.start(new TestStratgy(true));
+
 
         //then
-        List<Position> expectedPositions = Arrays.asList(Position.of(5), Position.of(5), Position.of(5));
-        assertThat(result.getCarPositions()).isEqualTo(expectedPositions);
+        List<Integer> expectedPositions = Arrays.asList(5, 5, 5);
+        Cars lastPostions = result.get(result.size() - 1);
+        assertThat(lastPostions.getCarPostions()).isEqualTo(expectedPositions);
     }
 
     @DisplayName("전진 조건에 따라 전진한 결과 테스트 - 전진 못하게 하는 전략 주입")
@@ -43,11 +44,11 @@ class GameConsoleTest {
         GameConsole gameConsole = new GameConsole(3, 5);
 
         //when
-        gameConsole.start(new TestStratgy(false));
+        List<Cars> result = gameConsole.start(new TestStratgy(false));
 
         //then
-        GameResult result = gameConsole.getResult();
-        List<Position> expectedPositions = Arrays.asList(Position.of(0), Position.of(0), Position.of(0));
-        assertThat(result.getCarPositions()).isEqualTo(expectedPositions);
+        List<Integer> expectedPositions = Arrays.asList(0, 0, 0);
+        Cars lastPostions = result.get(result.size() - 1);
+        assertThat(lastPostions.getCarPostions()).isEqualTo(expectedPositions);
     }
 }

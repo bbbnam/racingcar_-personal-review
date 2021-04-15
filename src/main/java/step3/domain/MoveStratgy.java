@@ -2,14 +2,15 @@ package step3.domain;
 
 public class MoveStratgy implements MoveCondition{
 
-    private final int number;
+    private final NumberGenerator generator;
 
-    public MoveStratgy(int number) {
-        this.number = number;
+    public MoveStratgy(NumberGenerator generator) {
+        this.generator = generator;
     }
 
     @Override
     public boolean isMovable() {
+        int number = generator.generate();
         if (number >= 4) {
             return true;
         }

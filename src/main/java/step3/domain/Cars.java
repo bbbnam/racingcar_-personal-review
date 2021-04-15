@@ -30,13 +30,14 @@ public class Cars {
     }
 
     public Cars moveAll(MoveCondition moveStratgy) {
+        List<Car> results = new ArrayList<>();
         for (Car car : cars) {
-            car.move(moveStratgy);
+            results.add(car.move(moveStratgy));
         }
-        return this;
+        return new Cars(results);
     }
 
-    public List<Position> getCarPostions() {
+    public List<Integer> getCarPostions() {
         return cars.stream()
                    .map(car -> car.getPostion())
                    .collect(Collectors.toList());
@@ -44,5 +45,12 @@ public class Cars {
 
     public int getCount() {
         return cars.size();
+    }
+
+    public String drawAll() {
+        return cars.stream()
+                   .map(car -> car.drawPostion())
+                   .collect(Collectors.joining("\n"));
+
     }
 }

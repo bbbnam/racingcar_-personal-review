@@ -7,6 +7,7 @@ import step3.domain.Position;
 import step3.exception.IllegalCarsException;
 
 import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -19,9 +20,10 @@ class CarsTest {
         Cars cars = Cars.of(3);
 
         Cars movedCars = cars.moveAll(new TestStratgy(true));
+        List<Integer> carPostions = movedCars.getCarPostions();
 
-        assertThat(movedCars.getCarPostions()).isEqualTo(
-                Arrays.asList(Position.of(1), Position.of(1), Position.of(1))
+        assertThat(carPostions).isEqualTo(
+                Arrays.asList(1, 1, 1)
         );
     }
 

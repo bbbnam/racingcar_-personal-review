@@ -2,7 +2,9 @@ package step3.domain;
 
 import step3.exception.IllegalPositionException;
 
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Position {
 
@@ -23,8 +25,20 @@ public class Position {
         }
     }
 
-    public void increase() {
-        position++;
+    public int increase() {
+        this.position += 1;
+        return position;
+    }
+
+    public int getNowPosition() {
+        return position;
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.stream(new String[position])
+                .map(position -> "-")
+                .collect(Collectors.joining(""));
     }
 
     @Override

@@ -13,7 +13,7 @@ class MoveStratgyTest {
     @ParameterizedTest
     @ValueSource(ints = {4,5,6,7,8})
     void isMovable_true(int number) {
-        MoveStratgy randomStratgy = new MoveStratgy(number);
+        MoveStratgy randomStratgy = new MoveStratgy(() -> number);
 
         assertThat(randomStratgy.isMovable()).isTrue();
     }
@@ -22,7 +22,7 @@ class MoveStratgyTest {
     @ParameterizedTest
     @ValueSource(ints = {1,2,3})
     void isMovable_false(int number) {
-        MoveStratgy randomStratgy = new MoveStratgy(number);
+        MoveStratgy randomStratgy = new MoveStratgy(() -> number);
 
         assertThat(randomStratgy.isMovable()).isFalse();
     }

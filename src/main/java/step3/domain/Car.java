@@ -11,14 +11,19 @@ public class Car {
     }
 
     public Car move(MoveCondition condition) {
+        int moved = getPostion();
         if (condition.isMovable()) {
-            position.increase();
+            moved = position.increase();
         }
-        return this;
+        return new Car(moved);
     }
 
-    public Position getPostion() {
-        return position;
+    public int getPostion() {
+        return position.getNowPosition();
+    }
+
+    public String drawPostion() {
+        return position.toString();
     }
 
     @Override

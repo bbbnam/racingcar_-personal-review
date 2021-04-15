@@ -2,13 +2,17 @@ package step3.domain;
 
 import step3.exception.IllegalContestsException;
 
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.stream.Stream;
+
 public class Contests {
 
-    private final int tryNumbers;
+    private Stream<Integer> tryNumbers;
 
     private Contests(int tryNumbers) {
         validateContests(tryNumbers);
-        this.tryNumbers = tryNumbers;
+        this.tryNumbers = Arrays.stream(new int[tryNumbers]).boxed();
     }
 
     private void validateContests(int tryNumbers) {
@@ -21,13 +25,11 @@ public class Contests {
         return new Contests(tryNumbers);
     }
 
-    public int getCount() {
-        return tryNumbers;
+    public Iterator<Integer> progressContest() {
+        return tryNumbers.iterator();
     }
 
-    public void start(Cars cars, MoveCondition moveStratgy) {
-        for (int i = 0; i < tryNumbers; i++) {
-            cars.moveAll(moveStratgy);
-        }
+    public int getTryCount() {
+        return Long.valueOf(tryNumbers.count()).intValue();
     }
 }
