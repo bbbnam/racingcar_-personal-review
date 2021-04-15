@@ -13,7 +13,7 @@ public class GameConsole {
     private final Cars cars;
     private final Contests contests;
 
-    public GameConsole(Cars cars, Contests contests) {
+    private GameConsole(Cars cars, Contests contests) {
         this.cars = cars;
         this.contests = contests;
     }
