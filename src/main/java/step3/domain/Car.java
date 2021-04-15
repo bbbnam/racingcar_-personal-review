@@ -4,9 +4,11 @@ import java.util.Objects;
 
 public class Car {
 
+    private final CarName carName;
     private final Position position;
 
-    public Car(int position) {
+    public Car(String name, int position) {
+        this.carName = CarName.of(name);
         this.position = Position.of(position);
     }
 
@@ -15,7 +17,7 @@ public class Car {
         if (condition.isMovable()) {
             moved = position.increase();
         }
-        return new Car(moved);
+        return new Car("pobi", moved);
     }
 
     public int getPostion() {
@@ -37,5 +39,9 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(position);
+    }
+
+    public String getCarName() {
+        return carName.getName();
     }
 }
