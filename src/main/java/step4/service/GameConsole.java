@@ -1,5 +1,6 @@
 package step4.service;
 
+import step4.domain.CarNames;
 import step4.domain.Cars;
 import step4.domain.Contests;
 import step4.domain.MoveCondition;
@@ -18,8 +19,11 @@ public class GameConsole {
         this.contests = contests;
     }
 
-    public static GameConsole of(int carsCount, int tryNumbers) {
-        return new GameConsole(Cars.of(carsCount), Contests.of(tryNumbers));
+    public static GameConsole of(String carNames, int tryNumbers) {
+        return new GameConsole(
+                Cars.of(CarNames.of(carNames).getCarNames()),
+                Contests.of(tryNumbers)
+        );
     }
 
     public List<Cars> start(MoveCondition moveStratgy) {

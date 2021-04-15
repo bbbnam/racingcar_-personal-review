@@ -21,10 +21,10 @@ public class Cars {
         }
     }
 
-    public static Cars of(int carsCount) {
+    public static Cars of(List<CarName> carNames) {
         List<Car> newCars = new ArrayList<>();
-        for (int i = 0; i < carsCount; i++) {
-            newCars.add(Car.of("pobi", 0));
+        for (int i = 0; i < carNames.size(); i++) {
+            newCars.add(Car.of(carNames.get(i).getName(), 0));
         }
         return new Cars(newCars);
     }
@@ -49,7 +49,7 @@ public class Cars {
 
     public String drawAll() {
         return cars.stream()
-                   .map(car -> car.drawPostion())
+                   .map(car -> car.getCarName() +" : "+car.drawPostion())
                    .collect(Collectors.joining("\n"));
 
     }
