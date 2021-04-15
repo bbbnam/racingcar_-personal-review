@@ -1,11 +1,11 @@
-package step4;
+package step5;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import step4.domain.Position;
-import step4.exception.IllegalPositionException;
+import step5.domain.Position;
+import step5.exception.IllegalPositionException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;

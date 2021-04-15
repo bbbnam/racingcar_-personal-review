@@ -1,9 +1,9 @@
-package step4;
+package step5;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step4.domain.Contests;
-import step4.exception.IllegalContestsException;
+import step5.domain.Contests;
+import step5.exception.IllegalContestsException;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 

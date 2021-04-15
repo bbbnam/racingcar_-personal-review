@@ -1,9 +1,9 @@
-package step4;
+package step5;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step4.domain.Cars;
-import step4.service.GameConsole;
+import step5.domain.Cars;
+import step5.service.GameConsole;
 
 import java.util.Arrays;
 import java.util.List;

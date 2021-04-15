@@ -1,6 +1,6 @@
-package step4.domain;
+package step5.domain;
 
-import step4.exception.IllegalCarsException;
+import step5.exception.IllegalCarsException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +23,8 @@ public class Cars {
 
     public static Cars of(List<CarName> carNames) {
         List<Car> newCars = new ArrayList<>();
-        for (int i = 0; i < carNames.size(); i++) {
-            newCars.add(Car.of(carNames.get(i).getName(), 0));
+        for (CarName carName : carNames) {
+            newCars.add(Car.of(carName.getName(), 0));
         }
         return new Cars(newCars);
     }
@@ -39,7 +39,7 @@ public class Cars {
 
     public List<Integer> getCarPostions() {
         return cars.stream()
-                .map(car -> car.getPostion())
+                .map(Car::getPostion)
                 .collect(Collectors.toList());
     }
 
