@@ -2,9 +2,9 @@ package step5;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step4.domain.Car;
-import step4.domain.Cars;
-import step4.domain.Winners;
+import step5.domain.Car;
+import step5.domain.Cars;
+import step5.domain.Winners;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -23,8 +23,8 @@ public class Cars {
 
     public static Cars of(List<CarName> carNames) {
         List<Car> newCars = new ArrayList<>();
-        for (int i = 0; i < carNames.size(); i++) {
-            newCars.add(Car.of(carNames.get(i).getName(), 0));
+        for (CarName carName : carNames) {
+            newCars.add(Car.of(carName.getName(), 0));
         }
         return new Cars(newCars);
     }
@@ -37,8 +37,18 @@ public class Cars {
         return new Cars(results);
     }
 
+    public List<Integer> getCarPostions() {
+        return cars.stream()
+                .map(Car::getPostion)
+                .collect(Collectors.toList());
+    }
+
     public List<Car> getCars() {
         return cars;
+    }
+
+    public int getCount() {
+        return cars.size();
     }
 
     public String drawAll() {

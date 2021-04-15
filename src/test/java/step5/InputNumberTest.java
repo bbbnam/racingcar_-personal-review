@@ -4,8 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
-import step3.domain.InputNumber;
-import step3.exception.IllegalInputException;
+import step5.domain.InputNumber;
+import step5.exception.IllegalInputException;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 

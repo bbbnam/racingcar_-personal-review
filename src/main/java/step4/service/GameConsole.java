@@ -32,4 +32,12 @@ public class GameConsole {
         }
         return results;
     }
+
+    public int getCarsCount() {
+        return cars.getCount();
+    }
+
+    public int getTryCount() {
+        return contests.getTryCount();
+    }
 }
