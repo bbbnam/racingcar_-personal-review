@@ -1,7 +1,7 @@
-package step3.domain;
+package step4.domain;
 
-import step3.exception.IllegalCarNameException;
-import step3.exception.IllegalInputException;
+import step4.exception.IllegalCarNameException;
+import step4.exception.IllegalInputException;
 
 public class CarName {
 

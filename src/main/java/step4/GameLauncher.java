@@ -1,9 +1,12 @@
-package step3;
+package step4;
 
-import step3.domain.*;
-import step3.service.GameConsole;
-import step3.view.InputView;
-import step3.view.ResultView;
+import step4.domain.Cars;
+import step4.domain.InputNumber;
+import step4.domain.MoveStratgy;
+import step4.domain.RandomGenerator;
+import step4.service.GameConsole;
+import step4.view.InputView;
+import step4.view.ResultView;
 
 import java.util.List;
 

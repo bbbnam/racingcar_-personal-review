@@ -1,6 +1,6 @@
-package step3.domain;
+package step4.domain;
 
-import step3.exception.IllegalCarsException;
+import step4.exception.IllegalCarsException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ public class Cars {
     public static Cars of(int carsCount) {
         List<Car> newCars = new ArrayList<>();
         for (int i = 0; i < carsCount; i++) {
-            newCars.add(new Car(0));
+            newCars.add(new Car("pobi", 0));
         }
         return new Cars(newCars);
     }

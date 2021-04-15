@@ -20,7 +20,7 @@ class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car("pobi", 0);
+        car = new Car(0);
     }
 
     @DisplayName("차량 이동 테스트 - 외부에서 조건 주입")
@@ -28,36 +28,7 @@ class CarTest {
     void move() {
         Car movedCar = car.move(() -> true);
 
-        assertThat(movedCar).isEqualTo(new Car("pobi", 1));
+        assertThat(movedCar).isEqualTo(new Car(1));
         assertThat(movedCar.getPostion()).isEqualTo(1);
-    }
-
-    @DisplayName("자동차 이름 부여")
-    @Test
-    void namedCar() {
-        Car pobiCar = new Car("pobi", 0);
-
-        assertThat(pobiCar.getCarName()).isEqualTo("pobi");
-    }
-
-
-    @DisplayName("자동차 이름 부여 유효성 검사 - 자동차 이름은 5자를 초과할 수 없다.")
-    @ParameterizedTest
-    @ValueSource(strings = {"hellow", "crisis", "baboda"})
-    void validateName1(String carName) {
-        assertThatThrownBy(() ->
-                new Car(carName, 0)
-        ).isInstanceOf(IllegalCarNameException.class)
-        .hasMessage("자동차 이름은 5자를 초과할 수 없습니다.");
-    }
-
-    @DisplayName("자동차 이름 부여 유효성 검사 - 자동차 이름은 공백이나 빈값이 올 수 없다.")
-    @ParameterizedTest
-    @NullAndEmptySource
-    void validateName2(String carName) {
-        assertThatThrownBy(() ->
-                new Car(carName, 0)
-        ).isInstanceOf(IllegalInputException.class)
-        .hasMessage("공백이나 빈 값은 입력할 수 없습니다.");
     }
 }
