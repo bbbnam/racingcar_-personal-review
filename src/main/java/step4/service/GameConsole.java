@@ -1,8 +1,9 @@
-package step3.service;
+package step4.service;
 
-import step3.domain.Cars;
-import step3.domain.Contests;
-import step3.domain.MoveCondition;
+import step4.domain.CarNames;
+import step4.domain.Cars;
+import step4.domain.Contests;
+import step4.domain.MoveCondition;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -13,13 +14,13 @@ public class GameConsole {
     private final Cars cars;
     private final Contests contests;
 
-    public GameConsole(Cars cars, Contests contests) {
+    private GameConsole(Cars cars, Contests contests) {
         this.cars = cars;
         this.contests = contests;
     }
 
-    public static GameConsole of(int carsCount, int tryNumbers) {
-        return new GameConsole(Cars.of(carsCount), Contests.of(tryNumbers));
+    public static GameConsole of(String carNames, int tryNumbers) {
+        return new GameConsole(Cars.of(CarNames.of(carNames).getCarNames()), Contests.of(tryNumbers));
     }
 
     public List<Cars> start(MoveCondition moveStratgy) {
@@ -30,13 +31,5 @@ public class GameConsole {
             intendedRace.next();
         }
         return results;
-    }
-
-    public int getCarsCount() {
-        return cars.getCount();
-    }
-
-    public int getTryCount() {
-        return contests.getTryCount();
     }
 }

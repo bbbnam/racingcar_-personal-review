@@ -17,8 +17,8 @@ class CarTest {
         car = new Car(0);
     }
 
-    @Test
     @DisplayName("차량 이동 테스트 - 외부에서 조건 주입")
+    @Test
     void move() {
         Car movedCar = car.move(() -> true);
 
