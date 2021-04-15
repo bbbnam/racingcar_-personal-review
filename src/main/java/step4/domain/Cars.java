@@ -24,7 +24,7 @@ public class Cars {
     public static Cars of(int carsCount) {
         List<Car> newCars = new ArrayList<>();
         for (int i = 0; i < carsCount; i++) {
-            newCars.add(new Car("pobi", 0));
+            newCars.add(Car.of("pobi", 0));
         }
         return new Cars(newCars);
     }

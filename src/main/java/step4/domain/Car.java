@@ -7,9 +7,13 @@ public class Car {
     private final CarName carName;
     private final Position position;
 
-    public Car(String name, int position) {
-        this.carName = CarName.of(name);
-        this.position = Position.of(position);
+    private Car(CarName carName, Position position) {
+        this.carName = carName;
+        this.position = position;
+    }
+
+    public static Car of(String name, int position) {
+        return new Car(CarName.of(name), Position.of(position));
     }
 
     public Car move(MoveCondition condition) {
@@ -17,7 +21,7 @@ public class Car {
         if (condition.isMovable()) {
             moved = position.increase();
         }
-        return new Car("pobi", moved);
+        return new Car(carName, Position.of(moved));
     }
 
     public int getPostion() {
