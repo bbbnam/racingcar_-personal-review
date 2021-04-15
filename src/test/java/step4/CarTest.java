@@ -40,7 +40,6 @@ class CarTest {
         assertThat(pobiCar.getCarName()).isEqualTo("pobi");
     }
 
-
     @DisplayName("자동차 이름 부여 유효성 검사 - 자동차 이름은 5자를 초과할 수 없다.")
     @ParameterizedTest
     @ValueSource(strings = {"hellow", "crisis", "baboda"})
