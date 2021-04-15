@@ -10,7 +10,7 @@ public class Cars {
 
     private final List<Car> cars;
 
-    private Cars(List<Car> cars) {
+    public Cars(List<Car> cars) {
         validateCars(cars);
         this.cars = cars;
     }
@@ -37,14 +37,8 @@ public class Cars {
         return new Cars(results);
     }
 
-    public List<Integer> getCarPostions() {
-        return cars.stream()
-                   .map(car -> car.getPostion())
-                   .collect(Collectors.toList());
-    }
-
-    public int getCount() {
-        return cars.size();
+    public List<Car> getCars() {
+        return cars;
     }
 
     public String drawAll() {

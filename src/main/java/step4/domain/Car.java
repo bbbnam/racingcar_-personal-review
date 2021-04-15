@@ -12,6 +12,10 @@ public class Car {
         this.position = position;
     }
 
+    public static Car of(String name) {
+        return new Car(CarName.of(name), Position.of(0));
+    }
+
     public static Car of(String name, int position) {
         return new Car(CarName.of(name), Position.of(position));
     }

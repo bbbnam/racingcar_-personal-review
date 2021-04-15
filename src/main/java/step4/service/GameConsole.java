@@ -20,10 +20,7 @@ public class GameConsole {
     }
 
     public static GameConsole of(String carNames, int tryNumbers) {
-        return new GameConsole(
-                Cars.of(CarNames.of(carNames).getCarNames()),
-                Contests.of(tryNumbers)
-        );
+        return new GameConsole(Cars.of(CarNames.of(carNames).getCarNames()), Contests.of(tryNumbers));
     }
 
     public List<Cars> start(MoveCondition moveStratgy) {
@@ -34,13 +31,5 @@ public class GameConsole {
             intendedRace.next();
         }
         return results;
-    }
-
-    public int getCarsCount() {
-        return cars.getCount();
-    }
-
-    public int getTryCount() {
-        return contests.getTryCount();
     }
 }
