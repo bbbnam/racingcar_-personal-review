@@ -42,3 +42,24 @@
 리스트에 저장해서 가져오든지, 그리면서 진행이 되든지 둘중 하나의 방식으로 해야 한다.
 나는 일단 기존 구현하던게 한번에 진행하던거여서 굳이 바꾸자면 진행할때마다 리스트에 저장하는 편이 쉬워서
 그렇게 진행하였다.
+
+## 2021-04-18 리뷰 받은 내용 정리
+1. GameConsole에 비즈니스 로직이 있는데 service로 두면 좋을까?
+2. 팩토리 패턴이 꼭 필요할까?
+3. 커스텀 Exception을 사용했는데 엄밀히 따지면 IllegalStateException을 받는건 어떨까?
+4. CarNames의 필요성?
+5. MoveStatgy를 생성자로 받을 필요는? -> 추후 generator가 바뀔 걸 고려했는데, 굳이?
+6. NumberGenerator의 필요성?
+7. Position 불변으로 하는게 낫지 않을까?
+8.  findWinner 에서 List<Cars>를 받는데 Cars만 받아도 되지 않을까?
+9. Contests에서 Stream으로 변수를 두었는데, 컬렉션으로 바꾸기 
+(스트림은 한번 사용하면 닫힘 -> 동일 메소드 두번 호출하면 해당 스트림 못 불러온다는 뜻)
+10. getter 사용 줄이기
+11. 인터페이스 하나면 FunctionalInterface 사용하기
+12. Car의 move메소드에서 position 값을 가져와서 다시 계산하고 다시 넣는데, 애초에 그냥 Position에서 처리하게
+가능하지 않을까?
+13.  Scanner 같은 경우도 외부에서 넣어주게 하는게 좋다고 함 -> 내부에서 선언하면 한번 사용하고 두번째는 안되는 오류? 같은게 있을 수도..
+14. Winners 클래스에 finalRecords.getCars() 이것 리팩토링 필요해 보임
+15. getPosition 부분도...
+16. findWinner 마지막 new ArrayList 불필요
+17. RandomGeneratorTest  필요한가? Random 클래스를 검증하는 것밖에...
