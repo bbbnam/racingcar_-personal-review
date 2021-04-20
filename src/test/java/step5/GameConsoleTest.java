@@ -3,7 +3,7 @@ package step5;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step5.domain.Cars;
-import step5.service.GameConsole;
+import step5.domain.GameConsole;
 
 import java.util.Arrays;
 import java.util.List;

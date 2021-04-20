@@ -1,9 +1,4 @@
-package step5.service;
-
-import step5.domain.CarNames;
-import step5.domain.Cars;
-import step5.domain.Contests;
-import step5.domain.MoveCondition;
+package step5.domain;
 
 import java.util.ArrayList;
 import java.util.Iterator;

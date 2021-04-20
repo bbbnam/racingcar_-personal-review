@@ -4,7 +4,7 @@ import step5.domain.Cars;
 import step5.domain.InputNumber;
 import step5.domain.MoveStratgy;
 import step5.domain.RandomGenerator;
-import step5.service.GameConsole;
+import step5.domain.GameConsole;
 import step5.view.InputView;
 import step5.view.ResultView;
 
