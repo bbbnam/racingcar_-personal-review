@@ -65,3 +65,4 @@
 17. RandomGeneratorTest  필요한가? Random 클래스를 검증하는 것밖에...
 18. TestStratgy 꼭 필요한가? -> 테스트 코드에서 직접 구현 하는 방법도 있고, functional 인터페이스 쓰면
     테스트에서 () -> 이런식으로 람다식 사용이 가능해서 ()->true 고정값 이렇게 줄 수 있음.
+19. 불필요한 조건문은 쓰지 말고 바로 return에 true/false 줄 수 있도록 하자
