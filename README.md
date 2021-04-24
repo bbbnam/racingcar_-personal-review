@@ -46,7 +46,7 @@
 ## 2021-04-18 리뷰 받은 내용 정리
 1. GameConsole에 비즈니스 로직이 있는데 service로 두면 좋을까?
 2. 팩토리 패턴이 꼭 필요할까?
-3. 커스텀 Exception을 사용했는데 엄밀히 따지면 IllegalStateException을 받는건 어떨까?
+3. 커스텀 Exception을 사용했는데 엄밀히 따지면 IllegalStateException을 받는건 어떨까? ->IllegalArgumentException 인가?
 4. CarNames의 필요성?
 5. MoveStatgy를 생성자로 받을 필요는? -> 추후 generator가 바뀔 걸 고려했는데, 굳이?
 6. NumberGenerator의 필요성?
@@ -58,7 +58,7 @@
 11. 인터페이스 하나면 FunctionalInterface 사용하기
 12. Car의 move메소드에서 position 값을 가져와서 다시 계산하고 다시 넣는데, 애초에 그냥 Position에서 처리하게
 가능하지 않을까?
-13.  Scanner 같은 경우도 외부에서 넣어주게 하는게 좋다고 함 -> 내부에서 선언하면 한번 사용하고 두번째는 안되는 오류? 같은게 있을 수도..
+13. Scanner 같은 경우도 외부에서 넣어주게 하는게 좋다고 함 -> 내부에서 선언하면 한번 사용하고 두번째는 안되는 오류? 같은게 있을 수도..
 14. Winners 클래스에 finalRecords.getCars() 이것 리팩토링 필요해 보임
 15. getPosition 부분도...
 16. findWinner 마지막 new ArrayList 불필요
@@ -66,3 +66,4 @@
 18. TestStratgy 꼭 필요한가? -> 테스트 코드에서 직접 구현 하는 방법도 있고, functional 인터페이스 쓰면
     테스트에서 () -> 이런식으로 람다식 사용이 가능해서 ()->true 고정값 이렇게 줄 수 있음.
 19. 불필요한 조건문은 쓰지 말고 바로 return에 true/false 줄 수 있도록 하자
+20. 
