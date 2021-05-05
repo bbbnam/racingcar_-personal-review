@@ -50,7 +50,7 @@
 4. CarNames의 필요성?
 5. MoveStatgy를 생성자로 받을 필요는? -> 추후 generator가 바뀔 걸 고려했는데, 굳이?
 6. NumberGenerator의 필요성?
-7. Position 불변으로 하는게 낫지 않을까?
+7. Position 불변으로 하는게 낫지 않을까? -> 이거 좀 영상을 봐야할듯..
 8.  findWinner 에서 List<Cars>를 받는데 Cars만 받아도 되지 않을까?
 9. Contests에서 Stream으로 변수를 두었는데, 컬렉션으로 바꾸기 
 (스트림은 한번 사용하면 닫힘 -> 동일 메소드 두번 호출하면 해당 스트림 못 불러온다는 뜻)
