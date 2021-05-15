@@ -37,6 +37,16 @@ public class Cars {
         return new Cars(results);
     }
 
+    public List<Integer> getCarPostions() {
+        return cars.stream()
+                .map(car -> car.getPostion())
+                .collect(Collectors.toList());
+    }
+
+    public int getCount() {
+        return cars.size();
+    }
+
     public List<Car> getCars() {
         return cars;
     }

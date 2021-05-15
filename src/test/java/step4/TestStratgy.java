@@ -1,6 +1,6 @@
 package step4;
 
-import step3.domain.MoveCondition;
+import step4.domain.MoveCondition;
 
 public class TestStratgy implements MoveCondition {
 

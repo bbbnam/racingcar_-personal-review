@@ -2,9 +2,11 @@ package step4;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.domain.Cars;
-import step3.exception.IllegalCarsException;
+import step4.domain.CarName;
+import step4.domain.Cars;
+import step4.exception.IllegalCarsException;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +18,7 @@ class CarsTest {
     @DisplayName("조건이 무조건 전진하게끔 되어 있을때, 차량 이동 테스트")
     @Test
     void moveAll() {
-        Cars cars = Cars.of(3);
+        Cars cars = Cars.of(Arrays.asList(CarName.of("pobi"), CarName.of("pobi"), CarName.of("pobi")));
 
         Cars movedCars = cars.moveAll(new TestStratgy(true));
         List<Integer> carPostions = movedCars.getCarPostions();
@@ -30,7 +32,7 @@ class CarsTest {
     @Test
     void validateCars() {
        assertThatThrownBy(() ->
-               Cars.of(0)
+               Cars.of(new ArrayList<>())
        ).isInstanceOf(IllegalCarsException.class)
        .hasMessage("차량 대수는 최소 1대 이상이어야 합니다.");
     }

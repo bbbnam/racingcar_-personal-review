@@ -2,8 +2,8 @@ package step4;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.domain.Cars;
-import step3.service.GameConsole;
+import step4.domain.Cars;
+import step4.service.GameConsole;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,7 +16,7 @@ class GameConsoleTest {
     @Test
     void init() {
         //when
-        GameConsole gameConsole = GameConsole.of(3, 5);
+        GameConsole gameConsole = GameConsole.of("pobi,crong,honux", 5);
 
         //then
         assertThat(gameConsole.getCarsCount()).isEqualTo(3);
@@ -27,7 +27,7 @@ class GameConsoleTest {
     @Test
     void move1() {
         //when
-        GameConsole gameConsole = GameConsole.of(3, 5);
+        GameConsole gameConsole = GameConsole.of("pobi,crong,honux", 5);
         List<Cars> result = gameConsole.start(new TestStratgy(true));
 
 
@@ -41,7 +41,7 @@ class GameConsoleTest {
     @Test
     void move2() {
         //given
-        GameConsole gameConsole = GameConsole.of(3, 5);
+        GameConsole gameConsole = GameConsole.of("pobi,crong,honux", 5);
 
         //when
         List<Cars> result = gameConsole.start(new TestStratgy(false));
