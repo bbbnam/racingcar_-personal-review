@@ -1,60 +1,49 @@
 package step5.domain;
 
-import step5.exception.IllegalCarsException;
-
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 public class Cars {
+    private static final int CARS_MIN = 2;
+    private static final String CARS_MIN_MESSAGE = "자동차 게임은 최소 차 2대 이상은 되어야 합니다.";
 
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
-        validateCars(cars);
-        this.cars = cars;
+        validateSize(cars);
+        this.cars = Collections.unmodifiableList(cars);
     }
 
-    private void validateCars(List<Car> cars) {
-        if (cars.isEmpty()) {
-            throw new IllegalCarsException();
+    private void validateSize(List<Car> cars) {
+        if (cars.size() < CARS_MIN) {
+            throw new IllegalArgumentException(CARS_MIN_MESSAGE);
         }
     }
 
-    public static Cars of(List<CarName> carNames) {
-        List<Car> newCars = new ArrayList<>();
-        for (CarName carName : carNames) {
-            newCars.add(Car.of(carName.getName(), 0));
-        }
-        return new Cars(newCars);
-    }
-
-    public Cars moveAll(MoveCondition moveStratgy) {
-        List<Car> results = new ArrayList<>();
+    public Cars moveAll(MoveStrategy moveStrategy) {
+        List<Car> movedCars = new ArrayList<>();
         for (Car car : cars) {
-            results.add(car.move(moveStratgy));
+            movedCars.add(car.move(moveStrategy));
         }
-        return new Cars(results);
-    }
-
-    public List<Integer> getCarPostions() {
-        return cars.stream()
-                .map(Car::getPostion)
-                .collect(Collectors.toList());
-    }
-
-    public int getCount() {
-        return cars.size();
+        return new Cars(movedCars);
     }
 
     public List<Car> getCars() {
-        return cars;
+        return Collections.unmodifiableList(cars);
     }
 
-    public String drawAll() {
-        return cars.stream()
-                   .map(car -> car.getCarName() +" : "+car.drawPostion())
-                   .collect(Collectors.joining("\n"));
+    public Car findMaxPosition() {
+        return Collections.max(cars);
+    }
 
+    public List<Car> findSamePosition(Car max) {
+        List<Car> findedCars = new ArrayList<>();
+        for (Car car : cars) {
+            Optional<Car> winner = car.samePosition(max);
+            winner.ifPresent(findedCars::add);
+        }
+        return findedCars;
     }
 }

@@ -1,39 +1,52 @@
 package step5.domain;
 
 import java.util.Objects;
+import java.util.Optional;
 
-public class Car {
+public class Car implements Comparable<Car> {
+    private static final int DEFAULT_POSITION = 0;
 
-    private final CarName carName;
-    private final Position position;
+    private final Name name;
+    private Position position;
 
-    private Car(CarName carName, Position position) {
-        this.carName = carName;
+    public Car(String name) {
+        this(name, DEFAULT_POSITION);
+    }
+
+    public Car(String name, int position) {
+        this(new Name(name), new Position(position));
+    }
+
+    public Car(Name name, Position position) {
+        this.name = name;
         this.position = position;
     }
 
-    public static Car of(String name) {
-        return new Car(CarName.of(name), Position.of(0));
-    }
-
-    public static Car of(String name, int position) {
-        return new Car(CarName.of(name), Position.of(position));
-    }
-
-    public Car move(MoveCondition condition) {
-        int moved = getPostion();
-        if (condition.isMovable()) {
-            moved = position.increase();
+    public Car move(MoveStrategy moveStrategy) {
+        if (moveStrategy.isMoveable()) {
+            position = position.increase();
         }
-        return new Car(carName, Position.of(moved));
+        return new Car(this.name, this.position);
     }
 
-    public int getPostion() {
-        return position.getNowPosition();
+    public Optional<Car> samePosition(Car maxPositionCar) {
+        if (this.position.equals(maxPositionCar.position)) {
+            return Optional.of(this);
+        }
+        return Optional.empty();
     }
 
-    public String drawPostion() {
-        return position.toString();
+    public String getName() {
+        return name.getValue();
+    }
+
+    public int getPosition() {
+        return position.getValue();
+    }
+
+    @Override
+    public int compareTo(Car other) {
+        return this.position.subtract(other.position);
     }
 
     @Override
@@ -41,15 +54,12 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return Objects.equals(position, car.position);
+        return Objects.equals(name, car.name) &&
+                Objects.equals(position, car.position);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(position);
-    }
-
-    public String getCarName() {
-        return carName.getName();
+        return Objects.hash(name, position);
     }
 }

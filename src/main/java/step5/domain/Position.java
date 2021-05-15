@@ -1,44 +1,34 @@
 package step5.domain;
 
-import step5.exception.IllegalPositionException;
-
-import java.util.Arrays;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class Position {
+    private static final int POSITION_MIN = 0;
+    private static final String POSITION_MIN_MESSAGE = "이동상태(position) 값은 음수가 될 수 없습니다.";
 
-    private int position;
+    private final int position;
 
-    private Position(int position) {
+    public Position(int position) {
         validatePosition(position);
         this.position = position;
     }
 
-    public static Position of(int position) {
-        return new Position(position);
-    }
-
     private void validatePosition(int position) {
-        if (position < 0) {
-            throw new IllegalPositionException();
+        if (position < POSITION_MIN) {
+            throw new IllegalArgumentException(POSITION_MIN_MESSAGE);
         }
     }
 
-    public int increase() {
-        this.position += 1;
-        return position;
+    public Position increase() {
+        return new Position(position + 1);
     }
 
-    public int getNowPosition() {
-        return position;
+    public int subtract(Position position) {
+        return this.position - position.position;
     }
 
-    @Override
-    public String toString() {
-        return Arrays.stream(new String[position])
-                .map(position -> "-")
-                .collect(Collectors.joining(""));
+    public int getValue() {
+        return position;
     }
 
     @Override

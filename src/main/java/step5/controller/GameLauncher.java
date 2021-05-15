@@ -1,10 +1,6 @@
 package step5.controller;
 
-import step5.domain.Cars;
-import step5.domain.InputNumber;
-import step5.domain.MoveStratgy;
-import step5.domain.RandomGenerator;
-import step5.domain.GameConsole;
+import step5.domain.*;
 import step5.view.InputView;
 import step5.view.ResultView;
 
@@ -14,15 +10,25 @@ public class GameLauncher {
     private static final InputView inputView = InputView.getInstance();
     private static final ResultView resultView = ResultView.getInstance();
 
+    private static List<Cars> progressGame(List<String> names, TryCount tryCount) {
+        RacingGame racingGame = new RacingGame(names, tryCount);
+        return racingGame.start(new RandomMoveStrategy());
+    }
+
+    private static List<Car> decideWinner(List<Cars> records) {
+        Cars lastRecord = records.get(records.size() - 1);
+        Winners winners = new Winners(lastRecord);
+        return winners.findWinner();
+    }
+
     public static void main(String[] args) {
-        String carNames = inputView.inputCarsName();
-        InputNumber tryNumbers = InputNumber.of(inputView.inputTryNumbers());
+        List<String> names = inputView.inputCarNames();
+        TryCount tryCount = new TryCount(inputView.inputTryNumbers());
 
-        GameConsole gameConsole = GameConsole.of(carNames, tryNumbers.getInt());
-        RandomGenerator randomGenerator = new RandomGenerator();
+        List<Cars> records = progressGame(names, tryCount);
+        resultView.printRecords(records);
 
-        List<Cars> results = gameConsole.start(new MoveStratgy(randomGenerator));
-
-        resultView.drawGameResult(results);
+        List<Car> winners = decideWinner(records);
+        resultView.printWinners(winners);
     }
 }

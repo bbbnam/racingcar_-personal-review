@@ -6,25 +6,25 @@ import step5.domain.Car;
 import step5.domain.Cars;
 import step5.domain.Winners;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class WinnersTest {
 
-    @DisplayName("승리자 찾는 테스트")
+    private final Car car1 = new Car("자동차1", 2);
+    private final Car car2 = new Car("자동차2", 1);
+    private final Car car3 = new Car("자동차3", 2);
+
+    @DisplayName("우승자 찾기 테스트")
     @Test
-    void findWinners() {
-        List<Cars> finalRecord = new ArrayList<>();
-        Car pobi = Car.of("pobi", 4);
-        Car crong = Car.of("crong", 4);
-        Car honux = Car.of("honux", 1);
-        finalRecord.add(new Cars(Arrays.asList(pobi,crong,honux)));
+    void findWinner() {
+        Cars records = new Cars(asList(car1, car2, car3));
 
-        Winners winners = Winners.of(finalRecord);
+        Winners winners = new Winners(records);
+        List<Car> results = winners.findWinner();
 
-        assertThat(winners.getWinners()).containsExactly(pobi, crong);
+        assertThat(results).containsExactly(car1, car3);
     }
 }

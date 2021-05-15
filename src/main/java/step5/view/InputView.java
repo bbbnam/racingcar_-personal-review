@@ -1,6 +1,9 @@
 package step5.view;
 
+import java.util.List;
 import java.util.Scanner;
+
+import static java.util.Arrays.asList;
 
 public class InputView {
 
@@ -18,13 +21,22 @@ public class InputView {
         return inputView;
     }
 
-    public String inputCarsName() {
+    public List<String> inputCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        return scanner.nextLine();
+        String inputNames = scanner.nextLine();
+        return convertToList(split(inputNames));
     }
 
-    public String inputTryNumbers() {
+    public int inputTryNumbers() {
         System.out.println("시도할 회수는 몇 회 인가요?");
-        return scanner.nextLine();
+        return scanner.nextInt();
+    }
+
+    private List<String> convertToList(String[] split) {
+        return asList(split);
+    }
+
+    private String[] split(String inputNames) {
+        return inputNames.split(",");
     }
 }
